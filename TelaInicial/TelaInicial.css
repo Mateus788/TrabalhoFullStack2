@@ -4,7 +4,7 @@ body {
     color: #ffffff;
     margin: 0;
     padding: 0;
-    padding-bottom: 50px; /* Espaçamento para evitar que o conteúdo fique atrás do footer */
+    padding-bottom: 50px;
 }
 
 header {
@@ -39,15 +39,19 @@ main {
     margin-bottom: 20px;
 }
 
-.post-form textarea {
+.post-form textarea,
+.comment-input,
+.nested-comment-input {
     width: 100%;
-    height: 60px;
+    height: 60px; /* altura fixa */
+    max-height: 60px; /* altura máxima */
     border-radius: 5px;
     border: 1px solid #38444d;
     background-color: #253341;
     color: #ffffff;
     padding: 10px;
-    resize: none;
+    resize: none; /* Desativa o redimensionamento */
+    overflow-y: auto; /* Adiciona rolagem vertical */
 }
 
 .post-form button {
@@ -67,17 +71,16 @@ main {
 
 .posts {
     margin-top: 20px;
-    transition: all 0.3s ease; /* Transição suave */
+    transition: all 0.3s ease;
 }
 
 .post {
-    background-color: #192734; /* Fundo dos posts */
+    background-color: #192734;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
     width: 100%;
     overflow-wrap: break-word;
-    border: 1px solid #1da1f2; /* Borda para destacar os posts */
 }
 
 .timestamp {
@@ -86,8 +89,8 @@ main {
     margin-left: 10px;
 }
 
-/* Botões de Curtir e Descurtir */
-.like-button, .dislike-button {
+.like-button,
+.dislike-button {
     background: none;
     border: none;
     color: #1da1f2;
@@ -96,7 +99,8 @@ main {
     margin-left: 10px;
 }
 
-.like-button:hover, .dislike-button:hover {
+.like-button:hover,
+.dislike-button:hover {
     color: #0a85d1;
 }
 
@@ -105,7 +109,6 @@ main {
     font-weight: bold;
 }
 
-/* Footer */
 footer {
     position: fixed;
     bottom: 0;
@@ -118,7 +121,6 @@ footer {
     font-size: 0.9em;
 }
 
-/* Responsividade */
 @media (max-width: 600px) {
     header {
         flex-direction: column;
@@ -136,19 +138,23 @@ footer {
 
 .comments-section {
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .comment-input,
 .nested-comment-input {
     width: 100%;
-    height: 40px; /* Altura da área de texto dos comentários */
+    height: 60px; /* altura fixa */
+    max-height: 60px; /* altura máxima */
     border-radius: 5px;
     border: 1px solid #38444d;
     background-color: #253341;
     color: #ffffff;
     padding: 10px;
-    resize: none;
-    margin-top: 5px; /* Espaçamento entre o textarea e o botão de comentar */
+    resize: none; /* Desativa o redimensionamento */
+    overflow-y: auto; /* Adiciona rolagem vertical */
+    margin-top: 5px;
 }
 
 .comment-button,
@@ -169,28 +175,31 @@ footer {
 }
 
 .comments {
+    display: flex;
+    flex-direction: column;
     margin-top: 10px;
 }
 
 .comment {
-    background-color: #233141; /* Fundo dos comentários */
-    padding: 8px; /* Um pouco menos de padding para comentários */
+    background-color: #233141;
+    padding: 8px;
     border-radius: 5px;
     margin-top: 5px;
     position: relative;
-    border-left: 4px solid #1da1f2; /* Destaque à esquerda */
+    border-left: 4px solid #1da1f2;
 }
 
 .nested-comment {
-    background-color: #1e2a33; /* Um tom mais escuro para comentários aninhados */
+    background-color: #1e2a33;
     padding: 5px;
     border-radius: 5px;
     margin-top: 5px;
-    margin-left: 20px; /* Indentação para comentários aninhados */
-    border-left: 4px solid #f39c12; /* Cor diferente para destacar */
+    margin-left: 20px;
+    border-left: 4px solid #f39c12;
+    width: calc(100% - 40px);
 }
 
-/* Nested comments */
 .nested-comments {
-    margin-top: 10px; /* Espaçamento para a seção de comentários aninhados */
+    margin-top: 10px;
+    margin-left: 20px;
 }

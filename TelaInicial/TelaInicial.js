@@ -1,6 +1,4 @@
-// TelaInicial.js
-
-document.addEventListener('DOMContentLoaded', loadPosts); // Carrega posts do localStorage
+document.addEventListener('DOMContentLoaded', loadPosts);
 
 document.querySelector('button').addEventListener('click', function() {
     const textarea = document.querySelector('#postTextarea');
@@ -19,16 +17,15 @@ document.querySelector('button').addEventListener('click', function() {
         return;
     }
 
-    errorMessage.style.display = 'none'; // Esconde mensagem de erro se tudo estiver certo
+    errorMessage.style.display = 'none';
 
     const newPost = createPostElement(postContent);
     document.querySelector('.posts').prepend(newPost);
-    savePostToLocalStorage(postContent); // Salva no localStorage
+    savePostToLocalStorage(postContent);
 
-    textarea.value = ''; // Limpa o textarea após publicar
+    textarea.value = '';
 });
 
-// Função para criar um novo post
 function createPostElement(content) {
     const newPost = document.createElement('div');
     newPost.classList.add('post');
@@ -49,12 +46,11 @@ function createPostElement(content) {
         </div>
     `;
 
-    addPostEventListeners(newPost); // Adiciona listeners de eventos
+    addPostEventListeners(newPost);
 
     return newPost;
 }
 
-// Função para adicionar event listeners aos posts
 function addPostEventListeners(post) {
     let likeCount = 0;
 
@@ -77,12 +73,11 @@ function addPostEventListeners(post) {
         if (commentContent) {
             const comment = createCommentElement(commentContent);
             post.querySelector('.comments').prepend(comment);
-            commentTextarea.value = ''; // Limpa o textarea de comentário
+            commentTextarea.value = '';
         }
     });
 }
 
-// Função para criar um novo comentário
 function createCommentElement(content, isNested = false) {
     const comment = document.createElement('div');
     comment.classList.add(isNested ? 'nested-comment' : 'comment');
@@ -103,12 +98,11 @@ function createCommentElement(content, isNested = false) {
         <div class="comments"></div>
     `;
 
-    addCommentEventListeners(comment); // Adiciona listeners aos comentários
+    addCommentEventListeners(comment);
 
     return comment;
 }
 
-// Função para adicionar event listeners aos comentários
 function addCommentEventListeners(comment) {
     let likeCount = 0;
 
@@ -131,19 +125,17 @@ function addCommentEventListeners(comment) {
         if (nestedCommentContent) {
             const nestedComment = createCommentElement(nestedCommentContent, true);
             comment.querySelector('.comments').prepend(nestedComment);
-            nestedCommentTextarea.value = ''; // Limpa o textarea de comentário
+            nestedCommentTextarea.value = '';
         }
     });
 }
 
-// Função para salvar posts no localStorage
 function savePostToLocalStorage(content) {
     const posts = JSON.parse(localStorage.getItem('posts')) || [];
     posts.push(content);
     localStorage.setItem('posts', JSON.stringify(posts));
 }
 
-// Função para carregar posts do localStorage
 function loadPosts() {
     const posts = JSON.parse(localStorage.getItem('posts')) || [];
     posts.forEach(content => {
