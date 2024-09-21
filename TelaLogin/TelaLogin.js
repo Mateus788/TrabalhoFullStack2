@@ -12,9 +12,9 @@ document.getElementById('loginButton').addEventListener('click', function() {
     // Armazenar o nome do usuário no localStorage
     localStorage.setItem('username', username);
 
-    alert('Login realizado com sucesso!'); // Simulação de login
+    alert('Login realizado com sucesso!'); 
     // Redireciona para a tela inicial
-    window.location.href = "../TelaInicial/index.html"; // Ajuste o caminho se necessário
+    window.location.href = "../TelaInicial/index.html"; 
 });
 
 document.getElementById('showRegisterForm').addEventListener('click', function(e) {
