@@ -1,4 +1,17 @@
-document.addEventListener('DOMContentLoaded', loadPosts);
+document.addEventListener('DOMContentLoaded', function() {
+    loadPosts();
+    displayWelcomeMessage();
+});
+
+function displayWelcomeMessage() {
+    const username = localStorage.getItem('username');
+    const welcomeMessage = document.getElementById('welcome-message');
+
+    if (username) {
+        welcomeMessage.textContent = `Bem-vindo, ${username}!`;
+        welcomeMessage.style.display = 'block'; // Certifique-se de que o elemento esteja visível
+    }
+}
 
 document.querySelector('button').addEventListener('click', function() {
     const textarea = document.querySelector('#postTextarea');

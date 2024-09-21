@@ -9,6 +9,9 @@ document.getElementById('loginButton').addEventListener('click', function() {
         return;
     }
 
+    // Armazenar o nome do usuário no localStorage
+    localStorage.setItem('username', username);
+
     alert('Login realizado com sucesso!'); // Simulação de login
     // Redireciona para a tela inicial
     window.location.href = "../TelaInicial/index.html"; // Ajuste o caminho se necessário
